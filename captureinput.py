@@ -62,5 +62,5 @@ while(running):
                 count += 1
                 image = ImageGrab.grab()
                 image = ImageOps.grayscale(image)
-                image = ImageOps.contain(image, (128,128))
+                image = image.resize((128,128))
                 image.save("data/"+str(count)+str(event.key)+".jpg")
