@@ -6,12 +6,12 @@ from PIL import Image, ImageGrab, ImageOps
 import glob
 import os
 import re
-list_of_files = glob.glob('E:/GeneralDev/Chronicon AI/data/*')
+list_of_files = glob.glob('E:/GeneralDev/chronicon-ai/data/*jpg')
 if(len(list_of_files) != 0):
     count
     last = max(list_of_files, key=os.path.getctime)
-    count = int(re.findall(r'\d',last)[0])
-    print("Number of images: {0}".format(count))
+    count = int(re.findall(r'\d+',last)[0])
+    print("ID # of the last file: {0}".format(count))
 print("Script running")
 
 def on_release(key):
