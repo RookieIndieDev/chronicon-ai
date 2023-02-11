@@ -13,13 +13,14 @@ if(len(list_of_files) != 0):
 			#image = image.resize((128,128))
 			#image.save('E:/GeneralDev/chronicon-ai/data/'+re.findall(r'(?<=\\)\w.+',file)[0])
 			image = numpy.asarray(image.getdata(), dtype=int)
+			image = numpy.resize(image, (128,128))
 			action = re.findall(r'(?<=\')\w+(?=\')', file)
 			if(action[0].isdigit()):
-				actions = numpy.append(actions, action[0])
+				actions = numpy.append(actions, int(action[0]))
 			else:
 				actions = numpy.append(actions, (ord(action[0])))
 			data.append(image)
 data = numpy.array(data)
-actions = numpy.array(actions)
+actions = numpy.array(actions, dtype=int)
 numpy.save("frames", data)
 numpy.save("actions", actions)
